@@ -1,1 +1,0 @@
-cmd_/home/leeyan/learning/frist.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -z noexecstack   --build-id  -T ./scripts/module-common.lds -o /home/leeyan/learning/frist.ko /home/leeyan/learning/frist.o /home/leeyan/learning/frist.mod.o;  true
