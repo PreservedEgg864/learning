@@ -13,12 +13,12 @@
 
 ## 一级目录结构
 ```
-├── frist_try              # 测试的demo。
-├── ch01_hello_drive       # 第1章：Hello World 内核模块
-├── ch02_char_device       # 第2章：字符设备驱动
-├── ch03_block_device      # 第3章：块设备驱动
-├── ch04_usb_driver        # 第4章：USB 驱动
-├── ch05_i2c_spi_driver    # 第5章：I2C/SPI 驱动
+├── ch01_prepare           # 测试的demo。
+├── ch02_hello_driver      # 第1章：Hello World 内核模块
+├── ch03_char_device       # 第2章：字符设备驱动
+├── ch04_block_device      # 第3章：块设备驱动
+├── ch05_usb_driver        # 第4章：USB 驱动
+├── ch06_i2c_spi_driver    # 第5章：I2C/SPI 驱动
 ├── ...
 └── docs                   # 学习笔记与调试记录
 ```
