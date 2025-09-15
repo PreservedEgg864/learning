@@ -47,6 +47,7 @@ static struct file_operations vled_fops = {
 
 static int major = 0;
 static struct cdev vled_cdev;
+
 static int __init vled_init(void)
 {
     dev_t devno;
@@ -73,6 +74,8 @@ static int __init vled_init(void)
         pr_info("vled driver loaded with major %d\n", major);
         return 0;
     }
+}
+
 static void __exit vled_exit(void)
 {
     dev_t devno = MKDEV(major, 0);
