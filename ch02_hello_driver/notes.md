@@ -1,4 +1,4 @@
-##printk的日志级别
+## printk的日志级别
 日志级别：KERN_EMERG, KERN_ALERT, KERN_CRIT, KERN_ERR, KERN_WARNING,
 KERN_NOTICE, KERN_INFO, KERN_DE
 默认情况下，只有KERN_WARNING及以上级别的消息会显示在控制台
