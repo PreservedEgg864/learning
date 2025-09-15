@@ -53,7 +53,6 @@ static int __init vled_init(void)
     dev_t devno;
     int ret;
 
-    // 动态分配主设备号
     ret = alloc_chrdev_region(&devno, 0, 1, DEVICE_NAME);
     if (ret < 0) {
         pr_err("Failed to allocate char device region\n");
@@ -88,5 +87,5 @@ module_init(vled_init);
 module_exit(vled_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Your Name");
+MODULE_AUTHOR("leey.lee");
 MODULE_DESCRIPTION("Virtual LED Driver");
