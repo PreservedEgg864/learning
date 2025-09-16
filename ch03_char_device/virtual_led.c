@@ -23,9 +23,8 @@ static int vled_release(struct inode *inode, struct file *filp)
 static ssize_t vled_read(struct file *filp, char __user *buf,
 size_t count, loff_t *f_pos)
 {
-    char status = '1'; // 模拟读取LED状态
-    if (copy_to_user(buf, &status, 1))
-    return -EFAULT;
+    char status = '1'; 
+    if (copy_to_user(buf, &status, 1)){return -EFAULT;}
     return 1;
 }
 static ssize_t vled_write(struct file *filp, const char __user *buf,
@@ -57,22 +56,22 @@ static int __init vled_init(void)
     if (ret < 0) {
         pr_err("Failed to allocate char device region\n");
         return ret;
-        major = MAJOR(devno);
-
-        // 初始化字符设备
-        cdev_init(&vled_cdev, &vled_fops);
-        vled_cdev.owner = THIS_MODULE;
-
-        // 添加字符设备到系统
-        ret = cdev_add(&vled_cdev, devno, 1);
-        if (ret) {
-            pr_err("Failed to add cdev\n");
-            unregister_chrdev_region(devno, 1);
-            return ret;
-        }
-        pr_info("vled driver loaded with major %d\n", major);
-        return 0;
     }
+    major = MAJOR(devno);
+
+    // 初始化字符设备
+    cdev_init(&vled_cdev, &vled_fops);
+    vled_cdev.owner = THIS_MODULE;
+
+    // 添加字符设备到系统
+    ret = cdev_add(&vled_cdev, devno, 1);
+    if (ret) {
+        pr_err("Failed to add cdev\n");
+        unregister_chrdev_region(devno, 1);
+        return ret;
+    }
+    pr_info("vled driver loaded with major %d\n", major);
+    return 0;
 }
 
 static void __exit vled_exit(void)
