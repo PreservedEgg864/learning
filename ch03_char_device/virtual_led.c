@@ -30,15 +30,18 @@ static int vled_release(struct inode *inode, struct file *filp){
 
 static ssize_t vled_read(struct file *filp, char __user *buf, size_t count, loff_t *f_pos){
     char status = '1'; 
+    // 把内核空间的数据拷贝到用户空间
+    // buf是用户空间的地址，&status是内核空间的地址, 1是拷贝的字节数
     if (copy_to_user(buf, &status, 1)){
         return -EFAULT;
     }
     return 1;
 }
 
-
 static ssize_t vled_write(struct file *filp, const char __user *buf, size_t count, loff_t *f_pos){
     char val;
+    // 把用户空间的数据拷贝到内核空间
+    // buf是用户空间的地址，&val是内核空间的地址, 1是拷贝的字节数
     if (copy_from_user(&val, buf, 1)){
         return -EFAULT;
     }
@@ -46,6 +49,7 @@ static ssize_t vled_write(struct file *filp, const char __user *buf, size_t coun
     pr_info("LED set to %c\n", val);
     return 1;
 }
+
 // 定义文件操作结构体,固定写法，把上面的函数关联起来
 static struct file_operations vled_fops = {
     // 这里指定是保护“函数指针表”的生命周期,当内核调用的时候，增加引用计数，防止模块被卸载
